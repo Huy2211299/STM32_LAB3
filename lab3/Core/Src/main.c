@@ -22,16 +22,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "button.h"
-#include "control_7SEG.h"
-#include "fsm_7SEG_horizontal.h"
-#include "fsm_7SEG_vertical.h"
-#include "fsm_system.h"
-#include "fsm_traffic_horizontal.h"
-#include "fsm_traffic_vertical.h"
-#include "global.h"
-#include "traffic_light.h"
-#include "software_timer.h"
+#include "fsm_automatic.h"
+#include "fsm_manual.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -103,23 +95,11 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  setTimer4(10);
-  setTimer6(10);
-  setTimer7(500);
-  setTimer8(500);
-  setTimer10(500);
+  trafficSetUp();
   while (1)
   {
-	  if(timer10_flag == 1){
-		  toggleLedRed();
-		  setTimer10(500);
-	  }
-
-	  fsm_system_run();
-	  fsm_7SEG_horizontal_run();
-	  fsm_7SEG_vertical_run();
-	  fsm_traffic_vertical_run();
-	  fsm_traffic_horizontal_run();
+	  fsm_autoRun();
+	  fsm_manualRun();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -222,15 +202,13 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LED_TEST_Pin|LED_RED_Pin|LED_YELLOW_Pin|LED_GREEN_Pin
-                          |LED_RED2_Pin|LED_YELLOW2_Pin|LED_GREEN2_Pin|EN0_Pin
-                          |EN1_Pin|EN2_Pin|EN3_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, RED2_Pin|YELLOW2_Pin|GREEN2_Pin|RED1_Pin
+                          |YELLOW1_Pin|GREEN1_Pin|a_Pin|b_Pin
+                          |c_Pin|d_Pin|e_Pin|f_Pin
+                          |g_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, a_Pin|b_Pin|c_Pin|c2_Pin
-                          |d2_Pin|e2_Pin|f2_Pin|g2_Pin
-                          |d_Pin|e_Pin|f_Pin|g_Pin
-                          |a2_Pin|b2_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, EN0_Pin|EN1_Pin|EN2_Pin|EN3_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : Button1_Pin Button2_Pin Button3_Pin */
   GPIO_InitStruct.Pin = Button1_Pin|Button2_Pin|Button3_Pin;
@@ -238,25 +216,21 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : LED_TEST_Pin LED_RED_Pin LED_YELLOW_Pin LED_GREEN_Pin
-                           LED_RED2_Pin LED_YELLOW2_Pin LED_GREEN2_Pin EN0_Pin
-                           EN1_Pin EN2_Pin EN3_Pin */
-  GPIO_InitStruct.Pin = LED_TEST_Pin|LED_RED_Pin|LED_YELLOW_Pin|LED_GREEN_Pin
-                          |LED_RED2_Pin|LED_YELLOW2_Pin|LED_GREEN2_Pin|EN0_Pin
-                          |EN1_Pin|EN2_Pin|EN3_Pin;
+  /*Configure GPIO pins : RED2_Pin YELLOW2_Pin GREEN2_Pin RED1_Pin
+                           YELLOW1_Pin GREEN1_Pin a_Pin b_Pin
+                           c_Pin d_Pin e_Pin f_Pin
+                           g_Pin */
+  GPIO_InitStruct.Pin = RED2_Pin|YELLOW2_Pin|GREEN2_Pin|RED1_Pin
+                          |YELLOW1_Pin|GREEN1_Pin|a_Pin|b_Pin
+                          |c_Pin|d_Pin|e_Pin|f_Pin
+                          |g_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : a_Pin b_Pin c_Pin c2_Pin
-                           d2_Pin e2_Pin f2_Pin g2_Pin
-                           d_Pin e_Pin f_Pin g_Pin
-                           a2_Pin b2_Pin */
-  GPIO_InitStruct.Pin = a_Pin|b_Pin|c_Pin|c2_Pin
-                          |d2_Pin|e2_Pin|f2_Pin|g2_Pin
-                          |d_Pin|e_Pin|f_Pin|g_Pin
-                          |a2_Pin|b2_Pin;
+  /*Configure GPIO pins : EN0_Pin EN1_Pin EN2_Pin EN3_Pin */
+  GPIO_InitStruct.Pin = EN0_Pin|EN1_Pin|EN2_Pin|EN3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -266,8 +240,11 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
-	timerRun();
-	getKeyInput();
+	timerRunCD();
+	timerRunSeg();
+	getKeyInput1();
+	getKeyInput2();
+	getKeyInput3();
 }
 /* USER CODE END 4 */
 

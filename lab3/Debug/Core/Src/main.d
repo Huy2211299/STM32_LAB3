@@ -23,14 +23,9 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
- ../Core/Inc/button.h ../Core/Inc/main.h ../Core/Inc/control_7SEG.h \
- ../Core/Inc/control_7SEG.h ../Core/Inc/fsm_7SEG_horizontal.h \
- ../Core/Inc/fsm_7SEG_vertical.h ../Core/Inc/fsm_system.h \
- ../Core/Inc/fsm_traffic_horizontal.h ../Core/Inc/fsm_traffic_vertical.h \
- ../Core/Inc/fsm_7SEG_horizontal.h ../Core/Inc/fsm_7SEG_vertical.h \
- ../Core/Inc/fsm_traffic_blink.h ../Core/Inc/fsm_traffic_horizontal.h \
- ../Core/Inc/fsm_traffic_vertical.h ../Core/Inc/global.h \
- ../Core/Inc/traffic_light.h ../Core/Inc/software_timer.h
+ ../Core/Inc/fsm_automatic.h ../Core/Inc/global.h ../Core/Inc/main.h \
+ ../Core/Inc/button.h ../Core/Inc/software_timer.h \
+ ../Core/Inc/fsm_manual.h
 
 ../Core/Inc/main.h:
 
@@ -82,36 +77,14 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
 
-../Core/Inc/button.h:
-
-../Core/Inc/main.h:
-
-../Core/Inc/control_7SEG.h:
-
-../Core/Inc/control_7SEG.h:
-
-../Core/Inc/fsm_7SEG_horizontal.h:
-
-../Core/Inc/fsm_7SEG_vertical.h:
-
-../Core/Inc/fsm_system.h:
-
-../Core/Inc/fsm_traffic_horizontal.h:
-
-../Core/Inc/fsm_traffic_vertical.h:
-
-../Core/Inc/fsm_7SEG_horizontal.h:
-
-../Core/Inc/fsm_7SEG_vertical.h:
-
-../Core/Inc/fsm_traffic_blink.h:
-
-../Core/Inc/fsm_traffic_horizontal.h:
-
-../Core/Inc/fsm_traffic_vertical.h:
+../Core/Inc/fsm_automatic.h:
 
 ../Core/Inc/global.h:
 
-../Core/Inc/traffic_light.h:
+../Core/Inc/main.h:
+
+../Core/Inc/button.h:
 
 ../Core/Inc/software_timer.h:
+
+../Core/Inc/fsm_manual.h:

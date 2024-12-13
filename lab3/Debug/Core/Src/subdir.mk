@@ -6,63 +6,45 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Core/Src/button.c \
-../Core/Src/control_7SEG.c \
-../Core/Src/fsm_7SEG_horizontal.c \
-../Core/Src/fsm_7SEG_vertical.c \
-../Core/Src/fsm_system.c \
-../Core/Src/fsm_traffic_blink.c \
-../Core/Src/fsm_traffic_horizontal.c \
-../Core/Src/fsm_traffic_vertical.c \
+../Core/Src/fsm_automatic.c \
+../Core/Src/fsm_manual.c \
 ../Core/Src/global.c \
 ../Core/Src/main.c \
+../Core/Src/scheduler.c \
 ../Core/Src/software_timer.c \
 ../Core/Src/stm32f1xx_hal_msp.c \
 ../Core/Src/stm32f1xx_it.c \
 ../Core/Src/syscalls.c \
 ../Core/Src/sysmem.c \
-../Core/Src/system_stm32f1xx.c \
-../Core/Src/traffic_buffer.c \
-../Core/Src/traffic_light.c 
+../Core/Src/system_stm32f1xx.c 
 
 OBJS += \
 ./Core/Src/button.o \
-./Core/Src/control_7SEG.o \
-./Core/Src/fsm_7SEG_horizontal.o \
-./Core/Src/fsm_7SEG_vertical.o \
-./Core/Src/fsm_system.o \
-./Core/Src/fsm_traffic_blink.o \
-./Core/Src/fsm_traffic_horizontal.o \
-./Core/Src/fsm_traffic_vertical.o \
+./Core/Src/fsm_automatic.o \
+./Core/Src/fsm_manual.o \
 ./Core/Src/global.o \
 ./Core/Src/main.o \
+./Core/Src/scheduler.o \
 ./Core/Src/software_timer.o \
 ./Core/Src/stm32f1xx_hal_msp.o \
 ./Core/Src/stm32f1xx_it.o \
 ./Core/Src/syscalls.o \
 ./Core/Src/sysmem.o \
-./Core/Src/system_stm32f1xx.o \
-./Core/Src/traffic_buffer.o \
-./Core/Src/traffic_light.o 
+./Core/Src/system_stm32f1xx.o 
 
 C_DEPS += \
 ./Core/Src/button.d \
-./Core/Src/control_7SEG.d \
-./Core/Src/fsm_7SEG_horizontal.d \
-./Core/Src/fsm_7SEG_vertical.d \
-./Core/Src/fsm_system.d \
-./Core/Src/fsm_traffic_blink.d \
-./Core/Src/fsm_traffic_horizontal.d \
-./Core/Src/fsm_traffic_vertical.d \
+./Core/Src/fsm_automatic.d \
+./Core/Src/fsm_manual.d \
 ./Core/Src/global.d \
 ./Core/Src/main.d \
+./Core/Src/scheduler.d \
 ./Core/Src/software_timer.d \
 ./Core/Src/stm32f1xx_hal_msp.d \
 ./Core/Src/stm32f1xx_it.d \
 ./Core/Src/syscalls.d \
 ./Core/Src/sysmem.d \
-./Core/Src/system_stm32f1xx.d \
-./Core/Src/traffic_buffer.d \
-./Core/Src/traffic_light.d 
+./Core/Src/system_stm32f1xx.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
